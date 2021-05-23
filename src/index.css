@@ -1,0 +1,99 @@
+body {
+  font-family: Open Sans; 
+  margin: 0px;
+}
+
+button {
+  font-family: Open Sans; 
+}
+
+.board {
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: auto;
+  max-width: 900px;
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 0.25rem;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 0.5rem;
+  font-size: 3rem;
+  font-weight: bold;
+  width: 100%;
+  height: 10rem;
+  text-align: center;
+}
+
+.square:hover {
+  outline: none;
+  background-color: rgb(241, 241, 241);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.mt-3 {
+  margin-top: 3rem;
+}
+
+.button {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+}
+
+.button:hover {
+  transition: 250ms;
+  background-color: gray;
+}
+
+.modal {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+  z-index: 888;
+}
+
+.modal div {
+  background-color: #fff;
+  padding-top: 2rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  height: 30vh;
+  width: 30vw;
+  z-index: 999;
+}
+
+@media only screen and (max-width: 600px) {
+  .square {
+    font-size: 1.5rem;
+    height: 5rem;
+  }
+
+  .button {
+    font-size: 1.5rem;
+  }
+
+  .modal div {
+    height: 30vh;
+    width: 90vw;
+  }
+}
