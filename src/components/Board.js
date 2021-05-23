@@ -151,7 +151,7 @@ class Board extends React.Component {
     }
 
     componentDidMount() {
-       // this.onShuffleNumbers()
+        this.onShuffleNumbers()
     }
 
     render() {
