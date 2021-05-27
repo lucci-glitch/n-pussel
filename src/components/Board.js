@@ -11,11 +11,13 @@ class Board extends React.Component {
         };
     }
 
+    // Finds a Square based on value and returns a index pos.
     findSquare = (squareValue) => {
         const squarePosition = this.state.numbers.indexOf(squareValue)
         return squarePosition
     }
 
+    // Checks is the state numbers equals the WIN_STATE
     checkIfCorrect = () => {
         const array = [...this.state.numbers]
         array.splice(this.findSquare(0),1)
@@ -28,6 +30,7 @@ class Board extends React.Component {
         }
     }
 
+    // Returns a int on which row the square is on
     whichRow = (position) => {
         if (position <= 4) {
             return 1
@@ -40,6 +43,7 @@ class Board extends React.Component {
         }
     }
 
+    // Returns a boolean whether two squares is on the same column
     sameColumn = (firstPosition, secondPosition) => {
         if (firstPosition > secondPosition) {
             const temp = firstPosition - secondPosition
@@ -55,6 +59,7 @@ class Board extends React.Component {
         }
     }
 
+    // Moves square horizontally
     moveSquareOnRow = (list, empt, sqr) => {
         const arr = list;
 
@@ -77,6 +82,7 @@ class Board extends React.Component {
         return arr
     }
 
+    // Moves square vertically
     moveSquareOnCol = (list, empt, sqr) => {
         const arr = list;
         let next = empt
@@ -98,10 +104,12 @@ class Board extends React.Component {
         return arr
     }
 
+    // Sets the new state of numbers
     handleSquareMovement(arr) {
         this.setState({numbers: arr});
       }
 
+    // Moves the square either on the same row or column
     movableSquare = (value) => {
         const emptySquare = (this.findSquare(0));
         const square = (this.findSquare(value))
@@ -116,6 +124,7 @@ class Board extends React.Component {
         }
     }
 
+    // Shuffle an a array
     shuffleArray(list) {
         const array = list
         for (var i = array.length - 1; i > 0; i--) {
@@ -130,9 +139,10 @@ class Board extends React.Component {
         return array
     }
 
+    // Shuffles the state numbers array
     onShuffleNumbers = () => {
         this.setState(state => {
-            const numbers = this.shuffleArray(state.numbers)
+            const numbers = this.shuffleArray(this.state.numbers)
             return {
                 numbers,
             }
@@ -143,8 +153,7 @@ class Board extends React.Component {
         return <Square key={i} value={i} x={x} y={y} squareToMove={this.movableSquare} />;
     }
 
-    componentDidUpdate(prevState) {
-
+    componentDidUpdate() {
         if(this.checkIfCorrect()) {
             this.props.solved()
         }    
