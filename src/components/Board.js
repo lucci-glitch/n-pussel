@@ -142,7 +142,7 @@ class Board extends React.Component {
     // Shuffles the state numbers array
     onShuffleNumbers = () => {
         this.setState(state => {
-            const numbers = this.shuffleArray(this.state.numbers)
+            const numbers = this.shuffleArray(state.numbers)
             return {
                 numbers,
             }
